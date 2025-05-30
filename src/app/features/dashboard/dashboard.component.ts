@@ -2,16 +2,51 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { TableModule } from 'primeng/table';
+import { AmountPipe } from "../../core/common/pipe/amount.pipe";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [AmountPipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
 
   public chart: any;
+
+  assetDetails = [
+  {
+    "assetClass": "Equities",
+    "amountInvested": 400000,
+    "percentage": 40
+  },
+  {
+    "assetClass": "Bonds",
+    "amountInvested": 250000,
+    "percentage": 25
+  },
+  {
+    "assetClass": "Real Estate / REITs",
+    "amountInvested": 150000,
+    "percentage": 15
+  },
+  {
+    "assetClass": "Cash / Equivalents",
+    "amountInvested": 100000,
+    "percentage": 10
+  },
+  {
+    "assetClass": "Commodities",
+    "amountInvested": 50000,
+    "percentage": 5
+  },
+  {
+    "assetClass": "Cryptocurrency",
+    "amountInvested": 50000,
+    "percentage": 5
+  }
+]
+ 
 
   constructor(private router: Router) {
 

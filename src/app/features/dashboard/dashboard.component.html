@@ -1,9 +1,37 @@
 <div class="top">
     <div class="right-add-button">
-        <button class="add-investment" (click)="gotoAddInvestment()" >Add Investment</button>
+        <button class="add-investment" (click)="gotoAddInvestment()">Add Investment</button>
     </div>
 </div>
 
-<div class="chart-container">
-      <canvas  id="MyChart" >{{ chart }}</canvas>
+<div class="content">
+            <div class="perform-title">Asset Allocation</div>
+    <div class="tables">
+
+        <div class="asset-allocation">
+            <div class="table-header">
+                <div class="title">Type</div>
+                <div class="title">Invested Amount</div>
+                <div class="title">Percentage</div>
+            </div>
+            @for (item of assetDetails; track $index) {
+                <div class="table-data">
+                    <div class="data">{{item.assetClass}}</div>
+                    <div class="data">{{item.amountInvested | amount }}</div>
+                    <div class="data">{{item.percentage}}%</div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="chart-container">
+
+        <div class="performance">
+            <div class="perform-title">Porfolio Performance</div>
+            <canvas id="MyChart">{{ chart }}</canvas>
+        </div>
+
+    </div>
+
 </div>

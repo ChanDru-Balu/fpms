@@ -1,1 +1,21 @@
-<p>add works!</p>
+<h3>Add Investment</h3>
+
+<div>
+    <form action="" [formGroup]="investForm" class="form">
+
+        <label>Asset Type</label>
+        <input type="text" formControlName="assetType" >
+
+        <label>Quantity</label>
+        <input type="text" formControlName="quantity" >
+
+        <label>Purchase Price</label>
+        <input type="text" formControlName="purchasePrice" >
+
+        <label>Date</label>
+        <input type="date" formControlName="date" >
+
+    </form>
+        <button (click)="addInvestment()" >Add</button>
+
+</div>
