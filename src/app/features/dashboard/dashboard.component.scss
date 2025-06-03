@@ -1,7 +1,15 @@
-.top{
-    display: flex;
-    justify-content: end;
-    padding: 10px;
+.top {
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+
+.add-investment {
+  background-color: #faebd7;
+  padding: 4px;
+  border-radius: 10px;
+  border: solid 0.5mm #d8ba92;
+  font-weight: 600;
 }
 
 .tables {
@@ -12,7 +20,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .asset-allocation {
@@ -54,6 +62,7 @@
 
 /* Responsive */
 @media (max-width: 600px) {
+
   .table-header,
   .table-data {
     // flex-direction: column;
@@ -70,15 +79,16 @@
 
 
 .chart-container {
-    display: flex;
+  display: flex;
 
-    .performance{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
+  .performance {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .perform-title {
-    font-size: 24px;
+  font-size: 24px;
+  text-align: center;
 }

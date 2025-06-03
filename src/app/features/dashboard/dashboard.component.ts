@@ -1,59 +1,54 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { TableModule } from 'primeng/table';
 import { AmountPipe } from "../../core/common/pipe/amount.pipe";
+import { asset, assetClass } from '../../core/common/interface/asset.interface';
+import { MatTableModule } from '@angular/material/table';
+import { AssetService } from './asset.service';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [AmountPipe],
+  imports: [MatTableModule , AmountPipe , MatPaginatorModule , MatSortModule , MatButtonModule , MatIconModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit , AfterViewInit {
+
+  displayedColumns: string[] = [];
+  dataSource = [];
+  @ViewChild(MatPaginator) paginator!: MatPaginator ;
+  @ViewChild(MatSort) sort!: MatSort;
 
   public chart: any;
 
-  assetDetails = [
-  {
-    "assetClass": "Equities",
-    "amountInvested": 400000,
-    "percentage": 40
-  },
-  {
-    "assetClass": "Bonds",
-    "amountInvested": 250000,
-    "percentage": 25
-  },
-  {
-    "assetClass": "Real Estate / REITs",
-    "amountInvested": 150000,
-    "percentage": 15
-  },
-  {
-    "assetClass": "Cash / Equivalents",
-    "amountInvested": 100000,
-    "percentage": 10
-  },
-  {
-    "assetClass": "Commodities",
-    "amountInvested": 50000,
-    "percentage": 5
-  },
-  {
-    "assetClass": "Cryptocurrency",
-    "amountInvested": 50000,
-    "percentage": 5
-  }
-]
- 
+  assetDetails: asset[] = [];
 
-  constructor(private router: Router) {
+
+  constructor(
+    private router: Router,
+    private assetService: AssetService
+  ) {
 
   }
 
   ngOnInit(): void {
+    this.assetService.getAssetDetails().subscribe((data) => {
+      this.assetDetails = data;
+      console.log("Details:",this.assetDetails)
+    });
+      this.displayedColumns = ['assetClass','amountInvested','percentage']
+    // this.createChart();
+
+  }
+
+  ngAfterViewInit(){
     this.createChart();
+
   }
 
   createChart() {

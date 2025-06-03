@@ -1,0 +1,32 @@
+[
+  {
+    "assetClass": "Equities",
+    "amountInvested": 400000,
+    "percentage": 40
+  },
+  {
+    "assetClass": "Bonds",
+    "amountInvested": 250000,
+    "percentage": 25
+  },
+  {
+    "assetClass": "Real Estate / REITs" ,
+    "amountInvested": 150000,
+    "percentage": 15
+  },
+  {
+    "assetClass": "Cash / Equivalents" ,
+    "amountInvested": 100000,
+    "percentage": 10
+  },
+  {
+    "assetClass": "Commodities",
+    "amountInvested": 50000,
+    "percentage": 5
+  },
+  {
+    "assetClass": "Cryptocurrency",
+    "amountInvested": 50000,
+    "percentage": 5
+  }
+]

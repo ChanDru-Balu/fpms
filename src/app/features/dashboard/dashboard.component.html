@@ -5,10 +5,35 @@
 </div>
 
 <div class="content">
-            <div class="perform-title">Asset Allocation</div>
+    <div class="perform-title">Asset Allocation</div>
     <div class="tables">
 
-        <div class="asset-allocation">
+        <table mat-table [dataSource]="assetDetails" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="assetClass">
+                <th mat-header-cell *matHeaderCellDef> Asset Class </th>
+                <td mat-cell *matCellDef="let element"> {{ element.assetClass }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amountInvested">
+                <th mat-header-cell *matHeaderCellDef> Amount Invested </th>
+                <td mat-cell *matCellDef="let element"> {{ element.amountInvested | amount}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="percentage">
+                <th mat-header-cell *matHeaderCellDef> Percentage </th>
+                <td mat-cell *matCellDef="let element"> {{ element.percentage }}% </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+
+
+        <!-- <div class="asset-allocation">
             <div class="table-header">
                 <div class="title">Type</div>
                 <div class="title">Invested Amount</div>
@@ -21,7 +46,7 @@
                     <div class="data">{{item.percentage}}%</div>
                 </div>
             }
-        </div>
+        </div> -->
     </div>
 
 
