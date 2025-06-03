@@ -1,21 +1,55 @@
-<h3>Add Investment</h3>
+<h3 class="text-center" appTextCase="uppercase" >Add Investment</h3>
 
 <div>
     <form action="" [formGroup]="investForm" class="form">
 
-        <label>Asset Type</label>
-        <input type="text" formControlName="assetType" >
 
-        <label>Quantity</label>
-        <input type="text" formControlName="quantity" >
+        <mat-form-field appearance="fill">
+            <mat-label>Asset Type</mat-label>
+            <mat-select formControlName="assetType">
+                <mat-option *ngFor="let option of assetClassOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <label>Purchase Price</label>
-        <input type="text" formControlName="purchasePrice" >
+        <div class="margin-bottom-medium" *ngIf="investForm.get('assetType')?.touched && investForm.get('assetType')?.errors" >
+            <span> Please select an asset type</span>
+        </div>
 
-        <label>Date</label>
-        <input type="date" formControlName="date" >
+        <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <input formControlName="quantity" matInput>
+        </mat-form-field>
+
+         <div class="margin-bottom-medium" *ngIf="investForm.get('quantity')?.touched && investForm.get('quantity')?.errors" >
+            <span> Please give proper quantity value</span>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Purchase Price</mat-label>
+            <input formControlName="purchasePrice" matInput>
+        </mat-form-field>
+
+          <div class="margin-bottom-medium" *ngIf="investForm.get('purchasePrice')?.touched && investForm.get('purchasePrice')?.errors" >
+            <span> Please give purchase price</span>
+        </div>
+
+
+        <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input type="date" formControlName="date" matInput>
+        </mat-form-field>
+        
+           <div class="margin-bottom-medium" *ngIf="investForm.get('date')?.touched && investForm.get('date')?.errors" >
+            <span> Please give purchased date</span>
+        </div>
+
 
     </form>
-        <button (click)="addInvestment()" >Add</button>
+    <div class="text-center">
+        <button class="add-investment" (click)="addInvestment()">Add Investment</button>
+
+    </div>
 
 </div>

@@ -4,7 +4,18 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
+Clone the Repo from github 
 
+```bash
+git clone https://github.com/ChanDru-Balu/fpms.git
+```
+
+install the required packages using the npm install inside the project repo
+
+```bash
+cd fpms
+npm install 
+```
 
 To start a local development server, run:
 
